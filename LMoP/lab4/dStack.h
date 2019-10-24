@@ -229,7 +229,7 @@ namespace Lab1NS{
 			}
 		}
 
-		dStack<T, MaxSize> &find (T const &obj){
+		dStack<T, MaxSize> find (T const &obj){
 			dStack<T, MaxSize> newStack;
 			dStackNode *currNode = _top;
 			while (currNode && currNode->prev){
@@ -245,7 +245,7 @@ namespace Lab1NS{
 		}
 
 		template <class Compare>
-		dStack<T, MaxSize> &find (T const &obj, Compare comp){
+		dStack<T, MaxSize> find (T const &obj, Compare comp){
 			dStack<T, MaxSize> newStack;
 			dStackNode *currNode = _top;
 			while (currNode && currNode->prev){

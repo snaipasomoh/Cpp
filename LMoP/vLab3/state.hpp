@@ -41,15 +41,6 @@ namespace lab{
 		bool operator<= (State const &other) const;
 		bool operator>= (State const &other) const;
 	};
-
-	class Node{
-		Node *next = nullptr;
-	public:
-		virtual ~Node () = 0;
-	};
-
-	class NodeData : State, Node{
-	};
 }
 
 #endif

@@ -172,3 +172,56 @@ std::istream &lab::Stack::read (std::istream &fin){
 size_t lab::Stack::getSize () const{
 	return size;
 }
+
+/*
+
+ #######  ##     ## ######## ########  ##        #######     ###    ########
+##     ## ##     ## ##       ##     ## ##       ##     ##   ## ##   ##     ##
+##     ## ##     ## ##       ##     ## ##       ##     ##  ##   ##  ##     ##
+##     ## ##     ## ######   ########  ##       ##     ## ##     ## ##     ##
+##     ##  ##   ##  ##       ##   ##   ##       ##     ## ######### ##     ##
+##     ##   ## ##   ##       ##    ##  ##       ##     ## ##     ## ##     ##
+ #######     ###    ######## ##     ## ########  #######  ##     ## ########
+
+*/
+
+lab::Stack lab::Stack::operator+ (lab::State const &data){
+	lab::Stack res(*this);
+	res.add(data);
+	return res;
+}
+
+lab::Stack lab::Stack::operator- (lab::State const &data){
+	lab::Stack res;
+	for (size_t i = 0; i < getSize(); i++){
+		if (get(i) == data){
+			continue;
+		}
+		res.add(get(i));
+	}
+	return res;
+}
+
+lab::Stack lab::operator+ (lab::State const &data, lab::Stack &st){
+	return st + data;
+}
+
+lab::Stack lab::operator- (lab::State const &data, lab::Stack &st){
+	return st - data;
+}
+
+lab::State lab::Stack::operator[] (size_t index) const{
+	return get(index);
+}
+
+lab::State &lab::Stack::operator[] (size_t index){
+	return get(index);
+}
+
+std::ostream &lab::operator<< (std::ostream &fout, lab::Stack const &cnt){
+	return cnt.write(fout);
+}
+
+std::istream &lab::operator>> (std::istream &fin, lab::Stack &cnt){
+	return cnt.read(fin);
+}

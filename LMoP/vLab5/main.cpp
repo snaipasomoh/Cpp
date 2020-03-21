@@ -52,11 +52,15 @@ int main (int argc, char **argv){
 	usa.setArea(9834000);
 
 	Stack<lab::State> stack;
-	stack.push_back(rus);
 	stack.push_back(usa);
+	stack.push_back(rus);
 
 	rus.setName("Russia2");
 	stack.insert(stack.begin(), rus);
+	std::cout << stack;
+
+	stack.sort(mCmp());
+	std::cout << stack;
 
 	std::ofstream fout ("data.txt");
 	fout << stack;
